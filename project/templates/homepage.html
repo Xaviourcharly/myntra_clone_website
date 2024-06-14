@@ -1,0 +1,150 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shopping for Women, Men, Kids Fashion & Lifestyle - Myntra</title>
+    <link rel="stylesheet" href="{% static '/homepage/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />    
+</head>
+
+<body>
+    <header>
+         <div class="logo_container">
+            <a href="{% url 'homes' %}"><img class="myntra_home" src="{% static '/homepage/images/myntra_logo.webp' %}" alt="Myntra Home"></a>
+         </div>
+         <nav class="nav_bar">
+            <a href="{% url 'mens' %}">MEN</a>
+            <a href="{% url 'womens' %}">WOMEN</a>
+            <a href="{% url 'kids' %}">KIDS</a>
+            <a href="{% url 'hlvng' %}">HOME & LIVING</a>
+            <a href="{% url 'beautys' %}">BEAUTY</a>
+            <a href="{% url 'studs' %}">STUDIO <sup>New</sup></a>
+         </nav>
+         <div class="search_bar">
+            <span class="material-symbols-outlined search_icon">search</span>
+            <input class="search_input" placeholder="Search for products, brands and more">
+         </div>
+         <div class="action_bar">
+            {% if request.user.is_authenticated %}
+            <div class="action_container">
+                <a href="{% url 'lgout' %}">
+                <span class="material-symbols-outlined action_icon">person</span>
+                <span class="action_name">Logout</span>
+                </a>
+            </div>
+            {% else %}
+            <div class="action_container">
+                <a href="{% url 'lginpg' %}">
+                <span class="material-symbols-outlined action_icon">person</span>
+                <span class="action_name">Login</span>
+                </a>
+            </div>
+            {% endif %}
+
+            <div class="action_container">
+                <span class="material-symbols-outlined action_icon">favorite</span>
+                <span class="action_name">Wishlist</span>
+            </div>
+
+            <div class="action_container">
+                <a href="{% url 'shpbag' %}">
+                <span class="material-symbols-outlined action_icon">shopping_bag</span>
+                <span class="action_name">Bag</span>
+                </a>
+            </div>
+         </div>
+    </header>
+    <main>
+        <div class="banner_container">
+            <img class="banner_image" src="{% static '/homepage/images/banner.jpg' %}" alt="Main banner">
+        </div>
+        <div class="category_heading">MEDAL WORTHY BRANDS TO BAG</div>
+        <div class="category_items">
+            {% for i in p %}
+            <div>
+            <a href="{% url 'prdet' pk=i.id %}"><img class="sale_item" src="{{i.photo.url}}">
+            
+            <div class="product-info d-flex">
+                <div>
+                    <h5 class="product-title mb-0">
+                        <p> {{i.name}}</p>
+                    </h5>
+                </a>
+                    <p class="product-p">{{i.description}}</p>
+                </div>
+
+                <small class="product-price text-muted ms-auto">₹{{i.price}}</small>
+            </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- <div class="category_heading">SHOP BY CATEGORY</div> -->
+        <!-- <div class="category_items">
+            {% for i in c %}
+            <a href="#"><img class="sale_item" src="{{i.photo.url}}"></a>
+            {% endfor %}
+        </div> -->
+    </main>
+    <footer>
+        <div class="footer_container">
+            <div class="footer_column">
+                <h3>ONLINE SHOPPING</h3>
+
+            <a href="{% url 'mens' %}">Men</a>
+            <a href="{% url 'womens' %}">Women</a>
+            <a href="{% url 'kids' %}">Kids</a>
+            <a href="{% url 'hlvng' %}">Home & Living</a>
+            <a href="{% url 'beautys' %}">Beauty</a>
+            <a href="#">Gift Card</a>
+            <a href="#">Myntra Insider</a>
+            </div>
+
+            <div class="footer_column">
+                <h3>CUSTOMER POLICIES</h3>
+
+            <a href="#">Contact Us</a>
+            <a href="#">FAQ</a>
+            <a href="#">T&C</a>
+            <a href="#">Terms Of Use</a>
+            <a href="#">Track Orders</a>
+            <a href="#">Shipping</a>
+            <a href="#">Cancellation</a>
+            <a href="#">Returns</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Grievance Officer</a>
+            </div>
+
+            <div class="footer_column">
+                <h3>USEFUL LINKS</h3>
+
+            <a href="#">Blog</a>
+            <a href="#">Careers</a>
+            <a href="#">Site Map</a>
+            <a href="#">Corporate Information</a>
+            <a href="#">Whitehat</a>
+            <a href="#">Cleartrip</a>
+            </div>
+
+        </div>
+        <hr>
+
+
+        <div class="copyright">
+            © 2024 www.myntra.com. All rights reserved.
+        </div>
+
+        
+    </footer>
+
+</body>
+
+</html>

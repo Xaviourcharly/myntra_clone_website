@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Bag</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
+    <link rel="stylesheet" href="{% static '/homepage/shoppingbag.css' %}">
+
+</head>
+<body>
+    <div class="card" style="height: fit-content;">
+        <div class="row">
+            <div class="col-md-8 cart" style="float: left;">
+                <div class="title">
+                    <div class="row">
+                        <div class="col"><h4><b>Shopping Cart</b></h4></div>
+                    </div>
+                </div> 
+                <div class="row border-top border-bottom">
+                    {% for item in items %}   
+                    <div class="row main align-items-center" style="display: block;float: left;">
+                        <div class="col-2" style="float:left;"><img class="img-fluid" src="{{item.item.photo.url}}"></div>
+                        <div class="col" style="width:200px;float: left; padding-top:10px; padding-inline: 100px;">
+                            <div class="row text-muted">{{item.item.name}}</div><br>
+                            <div class="row">{{item.item.description}}</div>
+                        </div>
+                        <div class="col" style="height: inherit ; float: left; padding-top: 20px;padding-inline: 50px;">{{item.item.price}}</div>
+                        <a href="{% url 'remove' id=item.id %}"><button class="btn btn-danger" style="float: right; width:100px;">Remove</button>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="back-to-shop"><a href="{% url 'homes' %}">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
+            </div>
+            <div class="col-md-4" style="float: left; width:100%; margin-left: 25px;">
+                <hr>
+                <div class="row">
+                </div>
+                <button class="btn" style="width: 95%; padding-left: 50px; ">CHECKOUT</button>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

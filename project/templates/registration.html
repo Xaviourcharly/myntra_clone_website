@@ -1,0 +1,68 @@
+<!-- <html>
+    <head>
+        <title>
+            Register
+        </title>
+        <style>
+            .formstyle{
+
+            }
+            .helptext{
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="margin: auto; width: fit-content;">
+            <form method="post">
+                {% csrf_token %}
+                {{form}}
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </body>
+</html> -->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
+    <link rel="stylesheet" href="{% static '/homepage/login.css' %}">
+    <style>
+        .helptext{
+                display: none;
+            }
+    </style>
+</head>
+<!-- jQuery -->
+<!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+<!-- jQuery Ripples JS -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script> -->
+
+
+<!-----mytra login page---->
+<body>
+<div class="mytra-login">
+  <form method="post">
+    {% csrf_token %}
+    <img src="https://1000logos.net/wp-content/uploads/2022/08/Myntra-Logo.png">
+    
+    <h1 class="heading">
+      Welcome to India's Largest Online Fashion Store
+    </h1>
+        {{form}}
+    
+    <button type="submit" class="signup">Signup</button>
+  </form>
+  
+  <div class="poster">
+  </div>
+</div>
+<!---mytra-login---->
+</body>
+</html>
